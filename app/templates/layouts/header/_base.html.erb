@@ -1,0 +1,31 @@
+<header class="bg-gray-100 border-b border-gray-300">
+  <div class="container mx-auto flex items-center justify-between p-4">
+    <div class="flex items-center space-x-8">
+      <span class="text-3xl font-bold">
+        Hanakai Contributors
+      </span>
+
+      <nav>
+        <ul class="flex space-x-4">
+          <li><a href="/" class="text-blue-500 hover:underline">Home</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <%# Org Switcher as a fancy select: Hanami, DRY, and ROM %>
+    <div class="mt-4">
+      <div class="mt-2 grid grid-cols-1">
+        <select class="col-start-1 row-start-1 w-full appearance-none rounded-md bg-white py-1.5 pr-8 pl-3 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-indigo-600 sm:text-sm/6">
+          <option value="all">All</option>
+          <option value="hanami">Hanami</option>
+          <option value="dry">DRY</option>
+          <option value="rom">ROM</option>
+        </select>
+
+        <svg viewBox="0 0 16 16" fill="currentColor" data-slot="icon" aria-hidden="true" class="pointer-events-none col-start-1 row-start-1 mr-2 size-5 self-center justify-self-end text-gray-500 sm:size-4 dark:text-gray-400">
+          <path d="M4.22 6.22a.75.75 0 0 1 1.06 0L8 8.94l2.72-2.72a.75.75 0 1 1 1.06 1.06l-3.25 3.25a.75.75 0 0 1-1.06 0L4.22 7.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" fill-rule="evenodd" />
+        </svg>
+      </div>
+    </div>
+  </div>
+</header>
