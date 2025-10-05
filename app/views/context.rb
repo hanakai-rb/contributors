@@ -10,7 +10,7 @@ module HanakaiContributors
         when "hanami"
           "Hanami Contributors"
         when "dry"
-          "Dry Contributors"
+          "DRY Contributors"
         when "rom"
           "ROM Contributors"
         else

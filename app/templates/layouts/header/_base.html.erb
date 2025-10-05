@@ -1,4 +1,4 @@
-<header class="bg-gray-100 border-b border-gray-300">
+<header class="bg-primary border-b b-primary text-primary-reversed">
   <div class="container mx-auto flex items-center justify-between p-4">
     <div class="flex items-center space-x-8">
       <span class="text-3xl font-bold">
@@ -7,13 +7,15 @@
 
       <nav>
         <ul class="flex space-x-4">
-          <li><a href="/" class="text-blue-500 hover:underline">Home</a></li>
+          <li><a href="/" class="text-primary-reversed hover:underline">Home</a></li>
+          <li><a href="/" class="text-primary-reversed hover:underline">How to Contribute</a></li>
         </ul>
       </nav>
     </div>
 
     <%# Org Switcher as a fancy select: Hanami, DRY, and ROM %>
-    <div class="mt-4">
+    <div>
+      <label for="org-select" class="sr-only text-sm font-medium text-primary-reversed">Organization Filter</label>
       <div class="mt-2 grid grid-cols-1">
         <select id="org-select" class="col-start-1 row-start-1 w-full appearance-none rounded-md bg-white py-1.5 pr-8 pl-3 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-indigo-600 sm:text-sm/6">
           <option value="">All</option>
