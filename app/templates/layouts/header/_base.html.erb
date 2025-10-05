@@ -2,7 +2,7 @@
   <div class="container mx-auto flex items-center justify-between p-4">
     <div class="flex items-center space-x-8">
       <span class="text-3xl font-bold">
-        Hanakai Contributors
+        <%= organization_to_title(organization) %>
       </span>
 
       <nav>
@@ -15,8 +15,8 @@
     <%# Org Switcher as a fancy select: Hanami, DRY, and ROM %>
     <div class="mt-4">
       <div class="mt-2 grid grid-cols-1">
-        <select class="col-start-1 row-start-1 w-full appearance-none rounded-md bg-white py-1.5 pr-8 pl-3 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-indigo-600 sm:text-sm/6">
-          <option value="all">All</option>
+        <select id="org-select" class="col-start-1 row-start-1 w-full appearance-none rounded-md bg-white py-1.5 pr-8 pl-3 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-indigo-600 sm:text-sm/6">
+          <option value="">All</option>
           <option value="hanami">Hanami</option>
           <option value="dry">DRY</option>
           <option value="rom">ROM</option>
