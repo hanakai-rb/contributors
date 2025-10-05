@@ -1,0 +1,8 @@
+{
+  "name": "hanakai_contributors",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "hanami-assets": "hanami/assets-js#main"
+  }
+}
