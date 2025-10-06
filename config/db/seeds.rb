@@ -128,3 +128,38 @@ tracked_projects.each do |proj|
     )
   end
 end
+
+contributors = Hanami.app["repos.contributor_repo"]
+
+# Add any known contributors here to ensure they are in the system
+known_contributors = [
+  {
+    full_name: "Tim Riley",
+    email: "tim.riley@example.com",
+    github_username: "timriley",
+    first_contribution_at: Time.new(2015, 1, 1),
+  }
+]
+
+known_contributors.each do |contrib|
+  existing = contributors.find_by_github_username(contrib[:github_username]) if contrib[:github_username]
+  existing ||= contributors.find_by_email(contrib[:email]) if contrib[:email]
+
+  if existing
+    contributors.update(existing.id, {
+      full_name: contrib[:full_name],
+      email: contrib[:email],
+      github_username: contrib[:github_username],
+      updated_at: Time.now
+    })
+  else
+    contributors.create(
+      full_name: contrib[:full_name],
+      email: contrib[:email],
+      github_username: contrib[:github_username],
+      first_contribution_at: contrib[:first_contribution_at],
+      created_at: Time.now,
+      updated_at: Time.now
+    )
+  end
+end

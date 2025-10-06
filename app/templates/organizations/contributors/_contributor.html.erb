@@ -2,15 +2,17 @@
   <td class="pl-6 pr-3 sm:pl-8 sm:pr-6 py-4">
     <div class="flex items-center gap-3 ml-3">
       <div class="flex-shrink-0">
-        <div class="h-10 w-10 rounded-full bg-gradient-to-br from-pink-400 to-pink-600 flex items-center justify-center text-white font-bold text-sm">JG</div>
+        <%= image_tag contributor.avatar_url, class: "h-10 w-10 rounded-xl" %>
       </div>
       <div class="min-w-0">
-        <div class="text-sm font-semibold text-gray-900">Luca Guidi</div>
-        <div class="text-sm text-gray-500">@jodosha</div>
+        <div class="text-sm font-semibold text-gray-900"><%= contributor.full_name %></div>
+        <div class="text-sm text-gray-500"><%= contributor.formatted_username %></div>
       </div>
     </div>
   </td>
 
-  <td class="px-3 sm:px-6 py-4 text-sm text-gray-900">3,500</td>
-  <td class="px-3 pr-6 sm:pr-8 py-4 text-sm text-gray-500">Jan 2014</td>
+  <td class="px-3 sm:px-6 py-4 text-sm text-gray-900"><%= contributor.commits_count %></td>
+  <td class="px-3 pr-6 sm:pr-8 py-4 text-sm text-gray-500">
+    <%= contributor.first_contribution_at.strftime("%B %d, %Y") if contributor.first_contribution_at %>
+  </td>
 </tr>

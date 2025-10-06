@@ -5,16 +5,16 @@ module HanakaiContributors
     module Organizations
       module Contributors
         class Index < HanakaiContributors::Action
-          include Deps["repos.organization_repo", "repos.project_repo"]
+          include Deps["repos.organization_repo", "repos.contributor_repo"]
 
           def handle(request, response)
             selected_organization = organization_repo.find_by_slug(request.params[:org]) if request.params[:org]
 
             if selected_organization
               response[:selected_organization] = selected_organization
-              response[:contributors] = ["some", "two"]
+              response[:contributors] = contributor_repo.by_organization(selected_organization.id)
             else
-              response[:contributors] = ["all"]
+              response[:contributors] = contributor_repo.all
             end
           end
         end
