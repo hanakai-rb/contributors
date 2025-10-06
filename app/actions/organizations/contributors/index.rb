@@ -14,7 +14,7 @@ module HanakaiContributors
               response[:selected_organization] = selected_organization
               response[:contributors] = contributor_repo.by_organization(selected_organization.id)
             else
-              response[:contributors] = contributor_repo.all
+              response[:contributors] = contributor_repo.all_by_commits_count
             end
           end
         end

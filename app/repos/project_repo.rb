@@ -17,6 +17,10 @@ module HanakaiContributors
 
       ## Finders
 
+      def find_by_github_repository(github_repository)
+        projects.where(github_repository: github_repository).one
+      end
+
       def find_by_organization(organization_or_id)
         if organization_or_id.is_a?(HanakaiContributors::Structs::Organization)
           projects.where(organization_id: organization_or_id.id).to_a

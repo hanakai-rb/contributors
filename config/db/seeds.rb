@@ -97,6 +97,14 @@ tracked_projects = [
     github_repository: "hanami/cli",
     description: "Command Line Interface for Hanami framework",
     slug: "cli",
+  },
+  {
+    organization_slug: "hanami",
+    name: "Hanami Utils",
+    full_name: "hanami/utils",
+    github_repository: "hanami/utils",
+    description: "Utility functions for Hanami framework",
+    slug: "utils",  
   }
 ]
 
