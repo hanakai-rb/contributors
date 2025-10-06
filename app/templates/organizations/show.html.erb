@@ -1,0 +1,29 @@
+<h1><%= organization.name %></h1>
+
+<div>
+  <p><%= organization.description %></p>
+
+  <p><%= link_to "Back to all organizations", routes.path(:root) %></p>
+</div>
+
+<h2>Projects</h2>
+
+<% if projects.empty? %>
+  <p class="text-gray-600">No tracked projects found for this organization.</p>
+<% else %>
+  <p class="text-gray-600 mb-4">Projects maintained by <strong><%= organization.name %></strong>:</p>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    <% projects.each do |project| %>
+      <div class="border border-gray-200 rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow">
+        <h3 class="text-xl font-semibold mb-2"><%= project.name %></h3>
+        <p class="text-gray-600 mb-4"><%= project.description %></p>
+        <p>
+          <a href="https://github.com/<%= project.github_repository %>" class="text-blue-600 hover:underline" target="_blank" rel="noopener noreferrer">
+            Visit Project
+          </a>
+        </p>
+      </div>
+    <% end %>
+  </div>
+<% end %>

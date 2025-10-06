@@ -64,3 +64,49 @@ tracked_organizations.each do |org|
     )
   end
 end
+
+tracked_projects = [
+  {
+    organization_slug: "hanakai",
+    name: "Hanakai Contributors",
+    full_name: "hanakai-rb/contributors",
+    description: "Recognizing the work of all our contributors!",
+    slug: "contributors",
+  },
+  {
+    organization_slug: "hanakai",
+    name: "Hanakai Website",
+    full_name: "hanakai-rb/site",
+    description: "The official website for the Hanakai ecosystem",
+    slug: "site",
+  }
+]
+
+projects = Hanami.app["repos.project_repo"]
+tracked_projects.each do |proj|
+  organization = organizations.find_by_slug(proj[:organization_slug])
+  next unless organization
+
+  existing = projects.find_by_organization(organization).find { |p| p.slug == proj[:slug] }
+
+  if existing
+    projects.update(existing.id, {
+      name: proj[:name],
+      full_name: proj[:full_name],
+      description: proj[:description],
+      github_repository: proj[:full_name],
+      updated_at: Time.now
+    })
+  else
+    projects.create(
+      organization_id: organization.id,
+      name: proj[:name],
+      full_name: proj[:full_name],
+      description: proj[:description],
+      slug: proj[:slug],
+      github_repository: proj[:full_name],
+      created_at: Time.now,
+      updated_at: Time.now
+    )
+  end
+end

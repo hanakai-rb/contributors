@@ -2,13 +2,25 @@
   <div class="container mx-auto flex items-center justify-between p-4">
     <div class="flex items-center space-x-8">
       <span class="text-3xl font-bold">
-        <%= organization_to_title(organization) %>
+        <% if org && org != "all" && org != "hanakai" && request.path != routes.path(:root) %>
+          <% root_path = routes.path(:organization, org: org) %>
+        <% else %>
+          <% root_path = routes.path(:root) %>
+        <% end %>
+
+        <%= link_to root_path do %>
+          <%= organization_to_title(org) %>
+        <% end %>
       </span>
 
       <nav>
         <ul class="flex space-x-4">
-          <li><a href="/" class="text-primary-reversed hover:underline">Home</a></li>
-          <li><a href="/" class="text-primary-reversed hover:underline">How to Contribute</a></li>
+          <% if org && org != "all" && org != "hanakai" %>
+            <li><a href="/" class="text-primary-reversed hover:underline"><- Back</a></li>
+            <li><a href="<%= organization_path(org) %>/contributors" class="text-primary-reversed hover:underline">Contributions</a></li>
+          <% else %>
+            <li><a href="/" class="text-primary-reversed hover:underline">How to Contribute</a></li>
+          <% end %>
         </ul>
       </nav>
     </div>

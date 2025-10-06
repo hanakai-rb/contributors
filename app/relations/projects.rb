@@ -2,10 +2,10 @@
 
 module HanakaiContributors
   module Relations
-    class Organizations < HanakaiContributors::DB::Relation
-      schema :organizations, infer: true do
+    class Projects < HanakaiContributors::DB::Relation
+      schema :projects, infer: true do
         associations do
-          has_many :projects
+          belongs_to :organization
         end
       end
     end

@@ -10,11 +10,26 @@ module HanakaiContributors
         when "hanami"
           "Hanami Contributors"
         when "dry"
-          "DRY Contributors"
+          "Dry Contributors"
         when "rom"
-          "ROM Contributors"
+          "Rom Contributors"
         else
           "Contributors"
+        end
+      end
+
+      def organization_path(org)
+        case org
+        when "hanakai"
+          "/"
+        when "hanami"
+          "/hanami"
+        when "dry"
+          "/dry"
+        when "rom"
+          "/rom"
+        else
+          "/"
         end
       end
     end
