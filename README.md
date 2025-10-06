@@ -1,6 +1,6 @@
-# HanakaiContributors
+# Hanakai Contributors
 
-Welcome to your Hanami app!
+Hanakai Contributors is a Hanami application to showcase the contributions to the Hanakai ecoystem.
 
 ## Getting Started
 
