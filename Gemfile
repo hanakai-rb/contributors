@@ -17,6 +17,9 @@ gem "puma"
 gem "rake"
 gem "sqlite3"
 
+# Commit parsing
+gem "rugged", "~> 1.9"
+
 group :development do
   gem "hanami-webconsole", github: "hanami/webconsole", branch: "main"
 end

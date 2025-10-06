@@ -380,6 +380,7 @@ GEM
       rspec-support (~> 3.13.0)
     rspec-support (3.13.6)
     ruby2_keywords (0.0.5)
+    rugged (1.9.0)
     sequel (5.97.0)
       bigdecimal
     shellany (0.0.1)
@@ -435,6 +436,7 @@ DEPENDENCIES
   puma
   rack-test
   rake
+  rugged (~> 1.9)
   sqlite3
 
 BUNDLED WITH
