@@ -67,6 +67,14 @@ module HanakaiContributors
         contributors.where(github_username: username).one
       end
 
+      def with_duplicates_by_name
+        contributors.select_group(:full_name).having { count(id) > 1 }.to_a
+          .map { |c| c[:full_name] }
+          .map { |name| contributors.where(full_name: name).to_a }
+          .flatten
+          .sort_by { |c| c.full_name.downcase }
+      end
+
       private
 
       def map_known_human_emails(email)
@@ -74,9 +82,15 @@ module HanakaiContributors
         # TODO: Make this better
         {
           "afomera@hey.com" => "andrea.fomera@gmail.com",
+          "tim@icelab.com.au" => "tim@riley.id.au",
           "tim.riley@example" => "tim@riley.id.au",
           "tim@openmonkey.com" => "tim@riley.id.au",
-          "cllns@users.noreply.github.com" => "sean@cllns.com"
+          "cllns@users.noreply.github.com" => "sean@cllns.com",
+          "solnic@users.noreply.github.com" => "peter@solnica.online", # IDK if these are right
+          "piotr.solnica@gmail.com" => "peter@solnica.online", # IDK if these are right
+          "piotr.solnica+oss@gmail.com" => "peter@solnica.online", # IDK if these are right
+
+          "don.mist@gmail.com" => "antondavydov.o@gmail.com"
         }[email] || email
       end
     end

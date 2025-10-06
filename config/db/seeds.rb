@@ -104,8 +104,64 @@ tracked_projects = [
     full_name: "hanami/utils",
     github_repository: "hanami/utils",
     description: "Utility functions for Hanami framework",
-    slug: "utils",  
-  }
+    slug: "utils",
+  },
+  {
+    organization_slug: "hanami",
+    name: "Hanami Router",
+    full_name: "hanami/router",
+    github_repository: "hanami/router",
+    description: "The Hanami router",
+    slug: "router",
+  },
+  {
+    organization_slug: "hanami",
+    name: "Hanami Assets",
+    full_name: "hanami/assets",
+    github_repository: "hanami/assets",
+    description: "Asset management for Ruby web applications",
+    slug: "assets",
+  },
+  {
+    organization_slug: "hanami",
+    name: "Hanami Webconsole",
+    full_name: "hanami/webconsole",
+    github_repository: "hanami/webconsole",
+    description: "Web console for Hanami applications",
+    slug: "webconsole",
+  },
+    {
+    organization_slug: "hanami",
+    name: "Hanami Rspec",
+    full_name: "hanami/rspec",
+    github_repository: "hanami/rspec",
+    description: "Hanami RSpec extensions",
+    slug: "rspec",
+  },
+  {
+    organization_slug: "hanami",
+    name: "Hanami Reloader",
+    full_name: "hanami/reloader",
+    github_repository: "hanami/reloader",
+    description: "Code reloading for Hanami 2",
+    slug: "reloader",
+  },
+  {
+    organization_slug: "hanami",
+    name: "Hanami DB",
+    full_name: "hanami/db",
+    github_repository: "hanami/db",
+    description: "The database layer for Hanami",
+    slug: "db",
+  },
+  {
+    organization_slug: "hanami",
+    name: "Hanami View",
+    full_name: "hanami/view",
+    github_repository: "hanami/view",
+    description: "Views, templates and presenters for Ruby web applications",
+    slug: "view",
+  },
 ]
 
 projects = Hanami.app["repos.project_repo"]
@@ -142,9 +198,9 @@ contributors = Hanami.app["repos.contributor_repo"]
 # Add any known contributors here to ensure they are in the system
 known_contributors = [
   {
-    full_name: "Tim Riley",
-    email: "tim.riley@example.com",
-    github_username: "timriley",
+    full_name: "Andrea Fomera",
+    email: "afomera@hey.com",
+    github_username: "afomera",
     first_contribution_at: Time.new(2015, 1, 1),
   }
 ]
