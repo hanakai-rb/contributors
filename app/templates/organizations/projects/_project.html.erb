@@ -1,0 +1,14 @@
+<div class="border border-gray-200 rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow">
+  <div class="text-gray-500 mb-4 text-sm">
+    <span class="px-2 py-1 inline-flex text-sm leading-5 font-medium rounded-md <%= project.label_color %> text-gray-800 border border-gray-100">
+      <%= project.organization.name %>
+    </span>
+  </div>
+  <h3 class="text-xl font-semibold mb-2"><%= project.name %></h3>
+  <p class="text-gray-600 mb-4"><%= project.description %></p>
+  <p class="flex items-center text-sm text-gray-500 space-x-2">
+    <a href="<%= project.github_url %>" class="hover:underline flex items-center gap-x-2" target="_blank" rel="noopener noreferrer">
+      GitHub
+    </a>
+  </p>
+</div>

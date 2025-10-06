@@ -17,6 +17,10 @@ module HanakaiContributors
 
       ## Finders
 
+      def find(id)
+        organizations.where(id: id).one
+      end
+
       def find_by_slug(slug)
         organizations.where(slug: slug).one
       end

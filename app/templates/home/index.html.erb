@@ -1,130 +1,177 @@
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-  <h1 class="text-4xl font-bold mb-2 text-gray-900">Contributors</h1>
+  <h1 class="text-4xl font-bold mb-2 text-gray-900">Welcome to Hanakai Contributors</h1>
 
   <p class="mb-8 text-gray-700">This is a site to showcase contributors to the Hanakai ecosystem. Hanakai is a collection of systems including Hanami, ROM, and Dry.</p>
 
-  <div class="bg-white shadow-sm rounded-lg overflow-hidden border border-gray-200">
-    <div>
-      <table class="min-w-full divide-y divide-gray-200">
-        <thead>
-          <tr>
-            <th scope="col" class="pl-6 pr-3 sm:pl-8 sm:pr-6 py-3 text-left text-xs font-bold text-gray-600 uppercase tracking-wide">Contributor</th>
-            <th scope="col" class="px-3 sm:px-6 py-3 text-left text-xs font-bold text-gray-600 uppercase tracking-wider">Organization</th>
-            <th scope="col" class="px-3 sm:px-6 py-3 text-left text-xs font-bold text-gray-600 uppercase tracking-wider">Commits</th>
-            <th scope="col" class="px-3 pr-6 sm:pr-8 py-3 text-left text-xs font-bold text-gray-600 uppercase tracking-wider">First Contribution</th>
-          </tr>
-        </thead>
-        <tbody class="bg-white divide-y divide-gray-200">
-          <tr class="hover:bg-gray-50 transition-colors">
-            <td class="pl-6 pr-3 sm:pl-8 sm:pr-6 py-4">
-              <div class="flex items-center gap-3 ml-3">
-                <div class="flex-shrink-0">
-                  <div class="h-10 w-10 rounded-full bg-gradient-to-br from-pink-400 to-pink-600 flex items-center justify-center text-white font-bold text-sm">JG</div>
-                </div>
-                <div class="min-w-0">
-                  <div class="text-sm font-semibold text-gray-900">Luca Guidi</div>
-                  <div class="text-sm text-gray-500">@jodosha</div>
-                </div>
+  <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
+    <!-- Filter sidebar -->
+    <aside class="lg:col-span-1">
+      <div class="mb-6">
+        <h3 class="text-lg font-semibold text-gray-900">Filter by Organization</h3>
+
+        <div class="space-y-2">
+          <!-- All Organizations Button -->
+          <a href="<%= routes.path(:root) %>" class="block px-4 py-2 rounded-lg border border-gray-200 hover:bg-gray-50 transition-colors <%= 'bg-gray-100 font-semibold' if org && org == 'all' %>">
+            <div class="flex items-center gap-3">
+              <span>All Organizations</span>
+            </div>
+          </a>
+          <% organizations.each do |organization| %>
+            <a href="<%= routes.path(:root, org: organization.slug) %>" class="block px-4 py-2 rounded-lg border border-gray-200 hover:bg-gray-50 transition-colors <%= 'bg-gray-100 font-semibold' if org && org == organization.slug %>">
+              <div class="flex items-center gap-3">
+                <img src="<%= organization.avatar_url %>" alt="<%= organization.name %> Avatar" class="w-8 h-8 rounded-xl">
+                <span><%= organization.name %></span>
               </div>
-            </td>
-            <td class="px-3 sm:px-6 py-4">
-              <span class="px-3 py-1 inline-flex text-xs leading-5 font-semibold rounded-full bg-pink-50 text-pink-700 border border-pink-200">Hanami</span>
-            </td>
-            <td class="px-3 sm:px-6 py-4 text-sm text-gray-900">3,500</td>
-            <td class="px-3 pr-6 sm:pr-8 py-4 text-sm text-gray-500">Jan 2014</td>
-          </tr>
-          <tr class="hover:bg-gray-50 transition-colors">
-            <td class="pl-6 pr-3 sm:pl-8 sm:pr-6 py-4">
-              <div class="flex items-center gap-3 ml-3">
-                <div class="flex-shrink-0">
-                  <div class="h-10 w-10 rounded-full bg-gradient-to-br from-pink-400 to-pink-600 flex items-center justify-center text-white font-bold text-sm">TR</div>
-                </div>
-                <div class="min-w-0">
-                  <div class="text-sm font-semibold text-gray-900">Tim Riley</div>
-                  <div class="text-sm text-gray-500">@timriley</div>
-                </div>
-              </div>
-            </td>
-            <td class="px-3 sm:px-6 py-4">
-              <span class="px-3 py-1 inline-flex text-xs leading-5 font-semibold rounded-full bg-pink-50 text-pink-700 border border-pink-200">Hanami</span>
-            </td>
-            <td class="px-3 sm:px-6 py-4 text-sm text-gray-900">2,800</td>
-            <td class="px-3 pr-6 sm:pr-8 py-4 text-sm text-gray-500">Jun 2015</td>
-          </tr>
-          <tr class="hover:bg-gray-50 transition-colors">
-            <td class="pl-6 pr-3 sm:pl-8 sm:pr-6 py-4">
-              <div class="flex items-center gap-3 ml-3">
-                <div class="flex-shrink-0">
-                  <div class="h-10 w-10 rounded-full bg-gradient-to-br from-orange-400 to-orange-600 flex items-center justify-center text-white font-bold text-sm">PS</div>
-                </div>
-                <div class="min-w-0">
-                  <div class="text-sm font-semibold text-gray-900">Piotr Solnica</div>
-                  <div class="text-sm text-gray-500">@solnic</div>
-                </div>
-              </div>
-            </td>
-            <td class="px-3 sm:px-6 py-4">
-              <span class="px-3 py-1 inline-flex text-xs leading-5 font-semibold rounded-full bg-orange-50 text-orange-700 border border-orange-200">Dry-rb</span>
-            </td>
-            <td class="px-3 sm:px-6 py-4 text-sm text-gray-900">4,200</td>
-            <td class="px-3 pr-6 sm:pr-8 py-4 text-sm text-gray-500">Mar 2014</td>
-          </tr>
-          <tr class="hover:bg-gray-50 transition-colors">
-            <td class="pl-6 pr-3 sm:pl-8 sm:pr-6 py-4">
-              <div class="flex items-center gap-3 ml-3">
-                <div class="flex-shrink-0">
-                  <div class="h-10 w-10 rounded-full bg-gradient-to-br from-green-400 to-green-600 flex items-center justify-center text-white font-bold text-sm">PS</div>
-                </div>
-                <div class="min-w-0">
-                  <div class="text-sm font-semibold text-gray-900">Piotr Solnica</div>
-                  <div class="text-sm text-gray-500">@solnic</div>
-                </div>
-              </div>
-            </td>
-            <td class="px-3 sm:px-6 py-4">
-              <span class="px-3 py-1 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-50 text-green-700 border border-green-200">ROM-rb</span>
-            </td>
-            <td class="px-3 sm:px-6 py-4 text-sm text-gray-900">3,800</td>
-            <td class="px-3 pr-6 sm:pr-8 py-4 text-sm text-gray-500">Feb 2014</td>
-          </tr>
-          <tr class="hover:bg-gray-50 transition-colors">
-            <td class="pl-6 pr-3 sm:pl-8 sm:pr-6 py-4">
-              <div class="flex items-center gap-3 ml-3">
-                <div class="flex-shrink-0">
-                  <div class="h-10 w-10 rounded-full bg-gradient-to-br from-pink-400 to-pink-600 flex items-center justify-center text-white font-bold text-sm">AF</div>
-                </div>
-                <div class="min-w-0">
-                  <div class="text-sm font-semibold text-gray-900">Andrea Fomera</div>
-                  <div class="text-sm text-gray-500">@afomera</div>
-                </div>
-              </div>
-            </td>
-            <td class="px-3 sm:px-6 py-4">
-              <span class="px-3 py-1 inline-flex text-xs leading-5 font-semibold rounded-full bg-pink-50 text-pink-700 border border-pink-200">Hanami</span>
-            </td>
-            <td class="px-3 sm:px-6 py-4 text-sm text-gray-900">145</td>
-            <td class="px-3 pr-6 sm:pr-8 py-4 text-sm text-gray-500">Aug 2022</td>
-          </tr>
-          <tr class="hover:bg-gray-50 transition-colors">
-            <td class="pl-6 pr-3 sm:pl-8 sm:pr-6 py-4">
-              <div class="flex items-center gap-3 ml-3">
-                <div class="flex-shrink-0">
-                  <div class="h-10 w-10 rounded-full bg-gradient-to-br from-pink-400 to-pink-600 flex items-center justify-center text-white font-bold text-sm">PA</div>
-                </div>
-                <div class="min-w-0">
-                  <div class="text-sm font-semibold text-gray-900">Philip Arndt</div>
-                  <div class="text-sm text-gray-500">@parndt</div>
-                </div>
-              </div>
-            </td>
-            <td class="px-3 sm:px-6 py-4">
-              <span class="px-3 py-1 inline-flex text-xs leading-5 font-semibold rounded-full bg-pink-50 text-pink-700 border border-pink-200">Hanami</span>
-            </td>
-            <td class="px-3 sm:px-6 py-4 text-sm text-gray-900">280</td>
-            <td class="px-3 pr-6 sm:pr-8 py-4 text-sm text-gray-500">Feb 2019</td>
-          </tr>
-        </tbody>
-      </table>
+            </a>
+          <% end %>
+        </div>
+      </div>
+
+      <div>
+        <a href="<%= routes.path(:root) %>" class="text-blue-600 hover:underline">Clear Filters</a>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="lg:col-span-3">
+      <h2 class="text-2xl font-semibold mb-4 text-gray-900">Reporting Projects</h2>
+
+      <p class="mb-4 text-gray-700">This section provides a summary of all reporting projects we're tracking commits for.</p>
+
+      <% if projects.empty? %>
+        <p class="text-gray-600">No tracked projects found.</p>
+      <% else %>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+          <% projects.each do |project| %>
+            <%= render "organizations/projects/project", project: project %>
+          <% end %>
+        </div>
+      <% end %>
+
+      <div class="bg-white shadow-sm rounded-lg overflow-hidden border border-gray-200 hidden">
+        <div>
+          <table class="min-w-full divide-y divide-gray-200">
+            <thead>
+              <tr>
+                <th scope="col" class="pl-6 pr-3 sm:pl-8 sm:pr-6 py-3 text-left text-xs font-bold text-gray-600 uppercase tracking-wide">Contributor</th>
+                <th scope="col" class="px-3 sm:px-6 py-3 text-left text-xs font-bold text-gray-600 uppercase tracking-wider">Organization</th>
+                <th scope="col" class="px-3 sm:px-6 py-3 text-left text-xs font-bold text-gray-600 uppercase tracking-wider">Commits</th>
+                <th scope="col" class="px-3 pr-6 sm:pr-8 py-3 text-left text-xs font-bold text-gray-600 uppercase tracking-wider">First Contribution</th>
+              </tr>
+            </thead>
+            <tbody class="bg-white divide-y divide-gray-200">
+              <tr class="hover:bg-gray-50 transition-colors">
+                <td class="pl-6 pr-3 sm:pl-8 sm:pr-6 py-4">
+                  <div class="flex items-center gap-3 ml-3">
+                    <div class="flex-shrink-0">
+                      <div class="h-10 w-10 rounded-full bg-gradient-to-br from-pink-400 to-pink-600 flex items-center justify-center text-white font-bold text-sm">JG</div>
+                    </div>
+                    <div class="min-w-0">
+                      <div class="text-sm font-semibold text-gray-900">Luca Guidi</div>
+                      <div class="text-sm text-gray-500">@jodosha</div>
+                    </div>
+                  </div>
+                </td>
+                <td class="px-3 sm:px-6 py-4">
+                  <span class="px-3 py-1 inline-flex text-xs leading-5 font-semibold rounded-full bg-pink-50 text-pink-700 border border-pink-200">Hanami</span>
+                </td>
+                <td class="px-3 sm:px-6 py-4 text-sm text-gray-900">3,500</td>
+                <td class="px-3 pr-6 sm:pr-8 py-4 text-sm text-gray-500">Jan 2014</td>
+              </tr>
+              <tr class="hover:bg-gray-50 transition-colors">
+                <td class="pl-6 pr-3 sm:pl-8 sm:pr-6 py-4">
+                  <div class="flex items-center gap-3 ml-3">
+                    <div class="flex-shrink-0">
+                      <div class="h-10 w-10 rounded-full bg-gradient-to-br from-pink-400 to-pink-600 flex items-center justify-center text-white font-bold text-sm">TR</div>
+                    </div>
+                    <div class="min-w-0">
+                      <div class="text-sm font-semibold text-gray-900">Tim Riley</div>
+                      <div class="text-sm text-gray-500">@timriley</div>
+                    </div>
+                  </div>
+                </td>
+                <td class="px-3 sm:px-6 py-4">
+                  <span class="px-3 py-1 inline-flex text-xs leading-5 font-semibold rounded-full bg-pink-50 text-pink-700 border border-pink-200">Hanami</span>
+                </td>
+                <td class="px-3 sm:px-6 py-4 text-sm text-gray-900">2,800</td>
+                <td class="px-3 pr-6 sm:pr-8 py-4 text-sm text-gray-500">Jun 2015</td>
+              </tr>
+              <tr class="hover:bg-gray-50 transition-colors">
+                <td class="pl-6 pr-3 sm:pl-8 sm:pr-6 py-4">
+                  <div class="flex items-center gap-3 ml-3">
+                    <div class="flex-shrink-0">
+                      <div class="h-10 w-10 rounded-full bg-gradient-to-br from-orange-400 to-orange-600 flex items-center justify-center text-white font-bold text-sm">PS</div>
+                    </div>
+                    <div class="min-w-0">
+                      <div class="text-sm font-semibold text-gray-900">Piotr Solnica</div>
+                      <div class="text-sm text-gray-500">@solnic</div>
+                    </div>
+                  </div>
+                </td>
+                <td class="px-3 sm:px-6 py-4">
+                  <span class="px-3 py-1 inline-flex text-xs leading-5 font-semibold rounded-full bg-orange-50 text-orange-700 border border-orange-200">Dry-rb</span>
+                </td>
+                <td class="px-3 sm:px-6 py-4 text-sm text-gray-900">4,200</td>
+                <td class="px-3 pr-6 sm:pr-8 py-4 text-sm text-gray-500">Mar 2014</td>
+              </tr>
+              <tr class="hover:bg-gray-50 transition-colors">
+                <td class="pl-6 pr-3 sm:pl-8 sm:pr-6 py-4">
+                  <div class="flex items-center gap-3 ml-3">
+                    <div class="flex-shrink-0">
+                      <div class="h-10 w-10 rounded-full bg-gradient-to-br from-green-400 to-green-600 flex items-center justify-center text-white font-bold text-sm">PS</div>
+                    </div>
+                    <div class="min-w-0">
+                      <div class="text-sm font-semibold text-gray-900">Piotr Solnica</div>
+                      <div class="text-sm text-gray-500">@solnic</div>
+                    </div>
+                  </div>
+                </td>
+                <td class="px-3 sm:px-6 py-4">
+                  <span class="px-3 py-1 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-50 text-green-700 border border-green-200">ROM-rb</span>
+                </td>
+                <td class="px-3 sm:px-6 py-4 text-sm text-gray-900">3,800</td>
+                <td class="px-3 pr-6 sm:pr-8 py-4 text-sm text-gray-500">Feb 2014</td>
+              </tr>
+              <tr class="hover:bg-gray-50 transition-colors">
+                <td class="pl-6 pr-3 sm:pl-8 sm:pr-6 py-4">
+                  <div class="flex items-center gap-3 ml-3">
+                    <div class="flex-shrink-0">
+                      <div class="h-10 w-10 rounded-full bg-gradient-to-br from-pink-400 to-pink-600 flex items-center justify-center text-white font-bold text-sm">AF</div>
+                    </div>
+                    <div class="min-w-0">
+                      <div class="text-sm font-semibold text-gray-900">Andrea Fomera</div>
+                      <div class="text-sm text-gray-500">@afomera</div>
+                    </div>
+                  </div>
+                </td>
+                <td class="px-3 sm:px-6 py-4">
+                  <span class="px-3 py-1 inline-flex text-xs leading-5 font-semibold rounded-full bg-pink-50 text-pink-700 border border-pink-200">Hanami</span>
+                </td>
+                <td class="px-3 sm:px-6 py-4 text-sm text-gray-900">145</td>
+                <td class="px-3 pr-6 sm:pr-8 py-4 text-sm text-gray-500">Aug 2022</td>
+              </tr>
+              <tr class="hover:bg-gray-50 transition-colors">
+                <td class="pl-6 pr-3 sm:pl-8 sm:pr-6 py-4">
+                  <div class="flex items-center gap-3 ml-3">
+                    <div class="flex-shrink-0">
+                      <div class="h-10 w-10 rounded-full bg-gradient-to-br from-pink-400 to-pink-600 flex items-center justify-center text-white font-bold text-sm">PA</div>
+                    </div>
+                    <div class="min-w-0">
+                      <div class="text-sm font-semibold text-gray-900">Philip Arndt</div>
+                      <div class="text-sm text-gray-500">@parndt</div>
+                    </div>
+                  </div>
+                </td>
+                <td class="px-3 sm:px-6 py-4">
+                  <span class="px-3 py-1 inline-flex text-xs leading-5 font-semibold rounded-full bg-pink-50 text-pink-700 border border-pink-200">Hanami</span>
+                </td>
+                <td class="px-3 sm:px-6 py-4 text-sm text-gray-900">280</td>
+                <td class="px-3 pr-6 sm:pr-8 py-4 text-sm text-gray-500">Feb 2019</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
   </div>
 </div>
