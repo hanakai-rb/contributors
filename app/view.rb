@@ -6,7 +6,7 @@ require "hanami/view"
 module HanakaiContributors
   class View < Hanami::View
     expose :org, layout: true, decorate: false do |context:, org: nil, slug: nil|
-      orgs = %w[hanami dry rom]
+      orgs = %w[hanakai hanami dry rom]
 
       detected = nil
 
@@ -15,11 +15,11 @@ module HanakaiContributors
         detected = org
       end
 
-      detected || "hanakai"
+      detected || "all"
     end
 
     expose :theme, layout: true, decorate: false do |context:, org: nil, slug: nil|
-      orgs = %w[hanami dry rom]
+      orgs = %w[hanakai hanami dry rom]
 
       detected = nil
 

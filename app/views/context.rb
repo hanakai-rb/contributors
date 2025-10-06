@@ -14,14 +14,14 @@ module HanakaiContributors
         when "rom"
           "Rom Contributors"
         else
-          "Contributors"
+          "Hanakai Contributors"
         end
       end
 
       def organization_path(org)
         case org
         when "hanakai"
-          "/"
+          "/hanakai"
         when "hanami"
           "/hanami"
         when "dry"
