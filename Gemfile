@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-source "https://rubygems.org"
+source "https://gem.coop"
 
 gem "hanami", github: "hanami/hanami", branch: "main"
 gem "hanami-cli", github: "hanami/cli", branch: "main"
