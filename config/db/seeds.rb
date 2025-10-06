@@ -70,6 +70,7 @@ tracked_projects = [
     organization_slug: "hanakai",
     name: "Hanakai Contributors",
     full_name: "hanakai-rb/contributors",
+    github_repository: "hanakai-rb/contributors",
     description: "Recognizing the work of all our contributors!",
     slug: "contributors",
   },
@@ -77,8 +78,25 @@ tracked_projects = [
     organization_slug: "hanakai",
     name: "Hanakai Website",
     full_name: "hanakai-rb/site",
+    github_repository: "hanakai-rb/site",
     description: "The official website for the Hanakai ecosystem",
     slug: "site",
+  },
+  {
+    organization_slug: "hanami",
+    name: "Hanami",
+    full_name: "hanami/hanami",
+    github_repository: "hanami/hanami",
+    description: "A flexible framework for maintainable Ruby apps",
+    slug: "hanami",
+  },
+  {
+    organization_slug: "hanami",
+    name: "Hanami CLI",
+    full_name: "hanami/cli",
+    github_repository: "hanami/cli",
+    description: "Command Line Interface for Hanami framework",
+    slug: "cli",
   }
 ]
 
