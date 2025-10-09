@@ -10,6 +10,10 @@ module HanakaiContributors
           belongs_to :contributor
         end
       end
+
+      def by_descending_date
+        order(Sequel.desc(:committed_at))
+      end
     end
   end
 end

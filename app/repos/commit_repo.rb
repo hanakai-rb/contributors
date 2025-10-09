@@ -7,6 +7,10 @@ module HanakaiContributors
         commits.to_a
       end
 
+      def all_by_descending_date
+        commits.order(Sequel.desc(:committed_at)).to_a
+      end
+
       # TODO: Remove this
       def delete_all_yes_really!
         commits.command(:delete).call
@@ -43,7 +47,7 @@ module HanakaiContributors
       end
 
       def by_contributor(contributor_id)
-        commits.where(contributor_id: contributor_id).to_a
+        commits.where(contributor_id: contributor_id).by_descending_date.to_a
       end
 
       def by_organization(organization_id)

@@ -1,36 +1,8 @@
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
 
-  <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
-    <!-- Filter sidebar -->
-    <aside class="lg:col-span-1">
-      <div class="mb-6">
-        <h3 class="text-lg font-semibold text-gray-900">Filter by Organization</h3>
-
-        <div class="space-y-2">
-          <!-- All Organizations Button -->
-          <a href="<%= routes.path(:contributors) %>" class="block px-4 py-2 rounded-lg border border-gray-200 hover:bg-gray-50 transition-colors <%= 'bg-gray-100 font-semibold' if org && org == 'all' %>">
-            <div class="flex items-center gap-3">
-              <span>All Organizations</span>
-            </div>
-          </a>
-          <% organizations.each do |organization| %>
-            <a href="<%= routes.path(:organization_contributors, org: organization.slug) %>" class="block px-4 py-2 rounded-lg border border-gray-200 hover:bg-gray-50 transition-colors <%= 'bg-gray-100 font-semibold' if org && org == organization.slug %>">
-              <div class="flex items-center gap-3">
-                <img src="<%= organization.avatar_url %>" alt="<%= organization.name %> Avatar" class="w-8 h-8 rounded-xl">
-                <span><%= organization.name %></span>
-              </div>
-            </a>
-          <% end %>
-        </div>
-      </div>
-
-      <div>
-        <a href="<%= routes.path(:contributors) %>" class="text-blue-600 hover:underline">Clear Filters</a>
-      </div>
-    </aside>
-
+  <div class="grid grid-cols-4 gap-8">
     <!-- Main Content -->
-    <div class="lg:col-span-3">
+    <div class="lg:col-span-4">
       <h1 class="text-4xl font-bold mb-2 text-gray-900"><%= selected_organization ? "#{selected_organization.name} Contributors" : "All Contributors"  %></h1>
 
       <% if contributors.empty? %>

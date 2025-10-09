@@ -27,7 +27,21 @@ module HanakaiContributors
       end
 
       def create(attributes)
-        contributors.command(:create).call(attributes)
+        attributes = attributes.merge(slug:
+          attributes[:full_name].downcase.strip.gsub(' ', '-').gsub(/[^\w-]/, '')
+        )
+        begin
+          contributors.command(:create).call(attributes)
+        rescue Sequel::UniqueConstraintViolation,
+          slug = attributes[:slug]
+          count = 2
+          while find_by_slug(slug)
+            slug = "#{attributes[:slug]}-#{count}"
+            count += 1
+          end
+          attributes[:slug] = slug
+          contributors.command(:create).call(attributes)
+        end
       end
 
       def update(id, attributes)
@@ -65,6 +79,14 @@ module HanakaiContributors
 
       def find_by_github_username(username)
         contributors.where(github_username: username).one
+      end
+
+      def find_by_slug(slug)
+        contributors.where(slug: slug).one
+      end
+
+      def find_by_slug!(slug)
+        contributors.where(slug: slug).one!
       end
 
       def with_duplicates_by_name

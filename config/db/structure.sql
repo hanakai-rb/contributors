@@ -28,7 +28,8 @@ CREATE TABLE `contributors`(
   `first_contribution_at` timestamp NOT NULL,
   `commits_count` integer DEFAULT(0) NOT NULL,
   `created_at` timestamp DEFAULT(datetime(CURRENT_TIMESTAMP, 'localtime')) NOT NULL,
-  `updated_at` timestamp DEFAULT(datetime(CURRENT_TIMESTAMP, 'localtime')) NOT NULL
+  `updated_at` timestamp DEFAULT(datetime(CURRENT_TIMESTAMP, 'localtime')) NOT NULL,
+  `slug` varchar(255) NULL
 );
 CREATE TABLE `commits`(
   `id` integer NOT NULL PRIMARY KEY AUTOINCREMENT,
@@ -46,8 +47,10 @@ CREATE TABLE `commits`(
   `merge` boolean DEFAULT(0) NOT NULL,
   `created_at` timestamp DEFAULT(datetime(CURRENT_TIMESTAMP, 'localtime')) NOT NULL
 );
+CREATE UNIQUE INDEX `contributors_slug_index` ON `contributors`(`slug`);
 INSERT INTO schema_migrations (filename) VALUES
 ('20251005174638_create_organizations.rb'),
 ('20251005184524_create_projects.rb'),
 ('20251005215005_create_contributors.rb'),
-('20251005220032_create_commits.rb');
+('20251005220032_create_commits.rb'),
+('20251008155310_add_slug_to_contributors.rb');

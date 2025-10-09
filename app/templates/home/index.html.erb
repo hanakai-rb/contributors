@@ -3,37 +3,9 @@
 
   <p class="mb-8 text-gray-700">This is a site to showcase contributors to the Hanakai ecosystem. Hanakai is a collection of systems including Hanami, ROM, and Dry.</p>
 
-  <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
-    <!-- Filter sidebar -->
-    <aside class="lg:col-span-1">
-      <div class="mb-6">
-        <h3 class="text-lg font-semibold text-gray-900">Filter by Organization</h3>
-
-        <div class="space-y-2">
-          <!-- All Organizations Button -->
-          <a href="<%= routes.path(:root) %>" class="block px-4 py-2 rounded-lg border border-gray-200 hover:bg-gray-50 transition-colors <%= 'bg-gray-100 font-semibold' if org && org == 'all' %>">
-            <div class="flex items-center gap-3">
-              <span>All Organizations</span>
-            </div>
-          </a>
-          <% organizations.each do |organization| %>
-            <a href="<%= routes.path(:root, org: organization.slug) %>" class="block px-4 py-2 rounded-lg border border-gray-200 hover:bg-gray-50 transition-colors <%= 'bg-gray-100 font-semibold' if org && org == organization.slug %>">
-              <div class="flex items-center gap-3">
-                <img src="<%= organization.avatar_url %>" alt="<%= organization.name %> Avatar" class="w-8 h-8 rounded-xl">
-                <span><%= organization.name %></span>
-              </div>
-            </a>
-          <% end %>
-        </div>
-      </div>
-
-      <div>
-        <a href="<%= routes.path(:root) %>" class="text-blue-600 hover:underline">Clear Filters</a>
-      </div>
-    </aside>
-
+  <div class="grid grid-cols-4 gap-8">
     <!-- Main Content -->
-    <div class="lg:col-span-3">
+    <div class="lg:col-span-4">
       <h2 class="text-2xl font-semibold mb-4 text-gray-900">Reporting Projects</h2>
 
       <p class="mb-4 text-gray-700">This section provides a summary of all reporting projects we're tracking commits for.</p>

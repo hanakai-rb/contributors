@@ -1,0 +1,105 @@
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+  <div class="grid grid-cols-4 gap-8">
+    <!-- Main Content -->
+    <div class="lg:col-span-4">
+      <% if contributor %>
+        <div class="flex items-center space-x-4 mb-6">
+          <%= image_tag(contributor.avatar_url, alt: "#{contributor.full_name} Avatar", class: "w-24 h-24 rounded-xl") %>
+
+          <div class="block ml-4">
+            <h1 class="text-4xl font-bold text-gray-900">
+              <%= contributor.full_name %>'s Commits
+            </h1>
+            <p class="text-gray-600">
+              <%= contributor.formatted_username %> • <%= commits.count %> commits
+            </p>
+          </div>
+        </div>
+      <% else %>
+          <div class="block ml-4">
+            <h1 class="text-4xl font-bold text-gray-900">
+              All Commits
+            </h1>
+            <p class="text-gray-600">
+              <%= contributors.count %> contributors • <%= commits.count %> commits
+            </p>
+          </div>
+      <% end %>
+
+      <% if commits.empty? %>
+        <p class="text-gray-600">No commits found.</p>
+      <% else %>
+        <div class="bg-white overflow-hidden shadow-sm rounded-lg">
+          <table class="min-w-full divide-y divide-gray-200">
+            <thead class="bg-gray-50">
+              <tr>
+                <th scope="col" class="px-3 sm:px-6 py-3 text-left text-xs font-bold text-gray-600 uppercase tracking-wider">Message</th>
+                <th scope="col" class="px-3 sm:px-6 py-3 text-left text-xs font-bold text-gray-600 uppercase tracking-wider">SHA</th>
+                <th scope="col" class="px-3 sm:px-6 py-3 text-left text-xs font-bold text-gray-600 uppercase tracking-wider">Date</th>
+                <% if !contributor %>
+                <th scope="col" class="px-3 sm:px-6 py-3 text-left text-xs font-bold text-gray-600 uppercase tracking-wider">By</th>
+                <% end %>
+                <th scope="col" class="px-3 pr-6 sm:pr-8 py-3 text-left text-xs font-bold text-gray-600 uppercase tracking-wider">On</th>
+              </tr>
+            </thead>
+            <tbody class="bg-white divide-y divide-gray-200">
+              <% commits.each do |commit| %>
+                <tr class="hover:bg-gray-50 transition-colors">
+                  <td class="pl-6 pr-3 sm:pl-8 sm:pr-6 py-4">
+                    <div class="flex items-start gap-3">
+                      <div class="min-w-0 flex-1 ml-3">
+                        <div class="text-sm font-medium text-gray-900 leading-5">
+                          <%= commit.message.strip.lines.first&.chomp %>
+                        </div>
+                        <% if commit.message.strip.lines.count > 1 %>
+                          <div class="text-xs text-gray-500 mt-1">
+                            <%= truncate(commit.message.strip.lines[1..-1].join("\n").strip, length: 100) %>
+                          </div>
+                        <% end %>
+                      </div>
+                    </div>
+                  </td>
+                  
+                  <td class="px-3 sm:px-6 py-4">
+                    <code class="text-xs font-mono bg-gray-100 px-2 py-1 rounded text-gray-700">
+                      <%= commit.sha1[0..7] %>
+                    </code>
+                  </td>
+                  
+                  <td class="px-3 sm:px-6 py-4 text-sm text-gray-500">
+                    <div class="flex flex-col">
+                      <span class="font-medium text-gray-900">
+                        <%= commit.committed_at.strftime("%b %d, %Y") %>
+                      </span>
+                      <span class="text-xs text-gray-500">
+                        <%= commit.committed_at.strftime("%l:%M %p") %>
+                      </span>
+                    </div>
+                  </td>
+
+                  <% if !contributor && commit.contributor_id %>
+                  <% contributor = contributors.find { |c| c.id == commit.contributor_id } %>
+                  <td class="px-3 sm:px-6 py-4 text-sm text-gray-900">
+                    <div class="flex items-center gap-3">
+                      <div class="min-w-0">
+                        <div class="text-sm font-semibold text-gray-900"><%= link_to contributor.full_name, routes.path(:contributor_commits, slug: contributor.slug) %></div>
+                        <div class="text-sm text-gray-500"><%= contributor.formatted_username %></div>
+                      </div>
+                    </div>
+                  </td>
+                  <% end %>
+                  
+                  <td class="px-3 pr-6 sm:pr-8 py-4 text-sm">
+                    <div class="flex flex-col">
+                      <%= projects.select { |p| p.id == commit.project_id }.map(&:name).join(", ") %>
+                    </div>
+                  </td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
