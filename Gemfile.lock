@@ -8,7 +8,7 @@ GIT
 
 GIT
   remote: https://github.com/hanami/cli.git
-  revision: 20a5ce56d2f13d3161d50bd41034578cf1089aa2
+  revision: f7c39abe9007abbda7d0b9b87201f19fd69d3faa
   branch: main
   specs:
     hanami-cli (2.3.0.beta1)
@@ -23,7 +23,7 @@ GIT
 
 GIT
   remote: https://github.com/hanami/controller.git
-  revision: 5aebd2a03d24c3afed2d15b105bc38f6038fae27
+  revision: ecd373d19fc8e6ccdabb9a32c6891b64262d9b00
   branch: main
   specs:
     hanami-controller (2.3.0.beta1)
@@ -45,7 +45,7 @@ GIT
 
 GIT
   remote: https://github.com/hanami/hanami.git
-  revision: 449d282d00614831bb438a31348091ca10b18bcb
+  revision: 5a422b5e484e7dcac030170a26fa636bc25c26b6
   branch: main
   specs:
     hanami (2.3.0.beta1)
@@ -75,7 +75,7 @@ GIT
 
 GIT
   remote: https://github.com/hanami/router.git
-  revision: 2be6d1c9d0ba50703fa254e979985cd9ab5103a4
+  revision: 0b8f18b1366841dbccf72d23700e8f6b326a53c3
   branch: main
   specs:
     hanami-router (2.3.0.beta1)
@@ -135,7 +135,7 @@ GEM
       erubi (>= 1.0.0)
       rack (>= 0.9.0)
       rouge (>= 1.0.0)
-    bigdecimal (3.3.0)
+    bigdecimal (3.3.1)
     binding_of_caller (1.0.1)
       debug_inspector (>= 1.2.0)
     capybara (3.40.0)
@@ -225,7 +225,7 @@ GEM
       dry-initializer (~> 3.2)
       dry-schema (~> 1.14)
       zeitwerk (~> 2.6)
-    erb (5.0.3)
+    erb (5.1.0)
     erubi (1.13.1)
     ffi (1.17.2-aarch64-linux-gnu)
     ffi (1.17.2-aarch64-linux-musl)
@@ -320,7 +320,7 @@ GEM
     puma (7.0.4)
       nio4r (~> 2.0)
     racc (1.8.1)
-    rack (3.2.2)
+    rack (3.2.3)
     rack-session (2.1.1)
       base64 (>= 0.1.0)
       rack (>= 3.0.0)
